@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, Colors, TextInput, TouchableOpacity, Button} from 'react-native';
+import { View, Text, StyleSheet, Colors, TextInput, TouchableOpacity, Button } from 'react-native';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import DateTimePicker from '@react-native-community/datetimepicker';
+import {Picker} from '@react-native-picker/picker';
 
 import Feather from 'react-native-vector-icons/Feather';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
@@ -16,7 +17,9 @@ const HomeScreen = ({navigation}) => {
     const [text, onChangeText] = useState({
         keberangkatan: '',
         tujuan: '',
+        kelas: 'penumpangreguler',
         tanggal: '',
+        jam: '',
     });
 
     const clickHandler = (textInput) => {
@@ -38,17 +41,15 @@ const HomeScreen = ({navigation}) => {
     };
 
     const onChange = (event, value) => {
+        setIsPickerShow(false);
         setDate(value);
-        if (Platform.OS === 'android') {
-            setIsPickerShow(false);
-        }
+        onChangeText({ ...text, tanggal: value.toISOString().slice(0,10) });
     };
 
     const onChangeTime = (event, value) => {
+        setIsPickerShowTime(false);
         setTime(value);
-        if (Platform.OS === 'android') {
-            setIsPickerShowTime(false);
-        }
+        onChangeText({ ...text, jam: onlyGetHoursAndMinutes(value) });
     };
 
     const onlyGetHoursAndMinutes = (date) => {
@@ -88,15 +89,16 @@ const HomeScreen = ({navigation}) => {
 
             <View style={formStyle.package}>
                 <Text style={formStyle.text}>Kelas Layanan</Text>
-                <View style={formStyle.formSingle}>
-                <MaterialIcons style={formStyle.Icon} name="airline-seat-recline-normal" size={30} color="#518fed"/>
-                    <TextInput
-                        style={formStyle.Input}
-                        placeholder="Pilih Layanan"
-                        value={text.tujuan}
-                        onChangeText={clickHandler('tujuan')}
-                        underlineColorAndroid="transparent"
-                    />
+                <View style={formStyle.formDateTime}>
+                    <MaterialIcons style={formStyle.Icon} name="airline-seat-recline-normal" size={30} color="#518fed"/>
+                    <Picker
+                        selectedValue={text.kelas}
+                        style={{ width: '80%' }}
+                        onValueChange={(itemValue) => onChangeText({...text, kelas: itemValue})}
+                    >
+                        <Picker.Item label="Penumpang Reguler" value="penumpangreguler" />
+                        <Picker.Item label="Penumpang Eksekutif" value="penumpangeksekutif" />
+                  </Picker>
                 </View>
             </View>
 
@@ -158,7 +160,8 @@ const HomeScreen = ({navigation}) => {
             <View style={formStyle.package}>
                 <TouchableOpacity 
                     style={formStyle.button}
-                    onPress={() => navigation.navigate('DetailScreen', {data: text})}
+                    // onPress={() => navigation.navigate('DetailScreen', {data: text})}
+                    onPress={() => (console.log(text))}
                 >
                     <EvilIcons style={formStyle.Icon} name="search" size={30} color="white"/>
                     <Text style={formStyle.textButton}>Cari</Text>
