@@ -6,6 +6,7 @@ import 'moment/locale/id'
 moment.locale('id');
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 
 const DetailScreen = ({route, navigation}) => {
     const { data } = route.params;
@@ -27,53 +28,89 @@ const DetailScreen = ({route, navigation}) => {
                 x.kelas.toLowerCase() == data.kelas.toLowerCase()
             )
         })
+
+        if(arrJadwal.length > 0){
+            var newData = {
+                kuota: arrJadwal[0].kuota,
+                keberangkatan: capitalizeEveryFirstLetterEachWord(arrJadwal[0].pelabuhanAwal),
+                tujuan: capitalizeEveryFirstLetterEachWord(arrJadwal[0].pelabuhanTujuan),
+                kelas: capitalizeEveryFirstLetterEachWord(arrJadwal[0].kelas),
+                tanggal: data.tanggal,
+                jam: data.jam,
+                harga: arrJadwal[0].harga,
+            }
+            // console.log(newData)
+            return (
+                <View style={detailStyle.box}>
+                    <Text style={detailStyle.title}>Kapalzy</Text>
+                    <Text style={detailStyle.titleSub}>by Aulia Rahman Zulfi(119140110)</Text>
+        
+                    <Text style={detailStyle.kuota}>kuota Tersedia ({arrJadwal[0].kuota})</Text>
+                    <Text style={detailStyle.rincian}>Rincian Tiket</Text>
+                    <View style={detailStyle.boxGray}>
+                        <View style={detailStyle.asalTujuan}>
+                            <Text style={detailStyle.keberangkatan}>{capitalizeEveryFirstLetterEachWord(arrJadwal[0].pelabuhanAwal)}</Text>
+                            <Ionicons style={detailStyle.Icon} name="ios-arrow-forward" size={30} color="black"/>
+                            <Text style={detailStyle.tujuan}>{capitalizeEveryFirstLetterEachWord(arrJadwal[0].pelabuhanTujuan)}</Text>
+                        </View>
+                        <Text style={{ fontWeight: 'bold', color: 'black' }}>Jadwal Masuk Pelabuhan</Text>
+                        <Text>{data.tanggal}</Text>
+                        <Text>{data.jam} WIB</Text>
+        
+                        <Text style={{ fontWeight: 'bold', color: 'black' }}>Layanan</Text>
+                        <Text>{capitalizeEveryFirstLetterEachWord(data.kelas)}</Text>
+        
+                        <View
+                            style={{
+                                borderBottomWidth: 1,
+                            }}
+                        />
+        
+                        <View style={detailStyle.hargaBox}>
+                            <Text style={detailStyle.textDewasa}>Dewasa x 1</Text>
+                            <Text style={detailStyle.harga}>Rp. {arrJadwal[0].harga}</Text>
+                        </View>
+                    </View>
+                    <View style={detailStyle.outerBox}>
+                        <View style={detailStyle.total}>
+                            <Text style={detailStyle.textTotal}>Total</Text>
+                            <Text style={detailStyle.textTotal}>Rp. {arrJadwal[0].harga}</Text>
+                        </View>
+                    </View>
+                    <View style={detailStyle.button}>
+                        <TouchableOpacity style={detailStyle.kembali} onPress={() => navigation.goBack()}>
+                            <Text style={detailStyle.textButtonK}>kembali</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={detailStyle.lanjutkan} onPress={() => navigation.navigate('InfoScreen', {data: newData})}>
+                            <Text style={detailStyle.textButtonL}>Lanjutkan</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            )
+        }else{
+            return(
+                <View style={detailStyle.box}>
+                    <Text style={detailStyle.title}>Kapalzy</Text>
+                    <Text style={detailStyle.titleSub}>by Aulia Rahman Zulfi(119140110)</Text>
+                    
+                    <View style={detailStyle.maaf}>
+                        <Text style={detailStyle.maafText}>Maaf, Jadwal Kapal Tidak Ditemukan</Text>
+                        <Fontisto style={detailStyle.Icon} name="ship" size={30} color="#518fed"/>
+                    </View>
+                    
+                    <View style={detailStyle.buttonNo}>
+                        <TouchableOpacity style={detailStyle.kembaliNo} onPress={() => navigation.goBack()}>
+                            <Text style={detailStyle.textButtonK}>kembali</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            )
+        }
     }
 
-    return (
-        <View style={detailStyle.box}>
-            <Text style={detailStyle.title}>Kapalzy</Text>
-            <Text style={detailStyle.titleSub}>by Aulia Rahman Zulfi(119140110)</Text>
-
-            <Text style={detailStyle.kuota}>kuota Tersedia (152)</Text>
-            <Text style={detailStyle.rincian}>Rincian Tiket</Text>
-            <View style={detailStyle.boxGray}>
-                <View style={detailStyle.asalTujuan}>
-                    <Text style={detailStyle.keberangkatan}>{capitalizeEveryFirstLetterEachWord(data.keberangkatan)}</Text>
-                    <Ionicons style={detailStyle.Icon} name="ios-arrow-forward" size={30} color="black"/>
-                    <Text style={detailStyle.tujuan}>{capitalizeEveryFirstLetterEachWord(data.tujuan)}</Text>
-                </View>
-                <Text style={{ fontWeight: 'bold', color: 'black' }}>Jadwal Masuk Pelabuhan</Text>
-                <Text>{data.tanggal}</Text>
-                <Text>{data.jam} WIB</Text>
-
-                <Text style={{ fontWeight: 'bold', color: 'black' }}>Layanan</Text>
-                <Text>{capitalizeEveryFirstLetterEachWord(data.kelas)}</Text>
-
-                <View
-                    style={{
-                        borderBottomWidth: 1,
-                    }}
-                />
-
-                <View style={detailStyle.hargaBox}>
-                    <Text style={detailStyle.textDewasa}>Dewasa</Text>
-                    <Text style={detailStyle.harga}>100000</Text>
-                </View>
-            </View>
-            <View style={detailStyle.outerBox}>
-                <View style={detailStyle.total}>
-                    <Text style={detailStyle.textTotal}>Total</Text>
-                    <Text style={detailStyle.textTotal}>Rp. 100000</Text>
-                </View>
-            </View>
-            <View style={detailStyle.button}>
-                <TouchableOpacity style={detailStyle.kembali} onPress={() => navigation.goBack()}>
-                    <Text style={detailStyle.textButtonK}>kembali</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={detailStyle.lanjutkan}>
-                    <Text style={detailStyle.textButtonL}>Lanjutkan</Text>
-                </TouchableOpacity>
-            </View>
+    return(
+        <View>
+            {getJadwal()}
         </View>
     )
 }
@@ -96,6 +133,7 @@ const detailStyle = StyleSheet.create({
         borderColor: '#969696',
         borderRadius: 10,
         marginTop: 10,
+        paddingTop: 0,
     },
     kuota:{
         fontSize: 15,
@@ -214,6 +252,34 @@ const detailStyle = StyleSheet.create({
     },
     outerBox:{
         marginBottom: 20,
+    },
+    kembaliNo:{
+        backgroundColor: '#fff',
+        padding: 10,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#969696',
+        paddingLeft: 20,
+        paddingRight: 20,
+    },
+    maaf:{
+        alignItems: 'center',
+        marginTop: '20%',
+    },
+    maafText:{
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: 'black',
+        textAlign: 'center',
+        marginBottom: '5%',
+    },
+    Icon:{
+        fontSize: 100,
+        marginLeft: 10,
+        marginRight: 10,
+    },
+    buttonNo:{
+        marginTop: '20%',
     },
 
 })

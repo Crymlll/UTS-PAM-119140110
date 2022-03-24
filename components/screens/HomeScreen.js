@@ -22,7 +22,7 @@ const HomeScreen = ({navigation}) => {
         keberangkatan: '',
         tujuan: '',
         kelas: 'reguler',
-        tanggal: '7 April 2022',
+        tanggal: 'Kamis, 7 April 2022',
         jam: '11:40',
     });
 

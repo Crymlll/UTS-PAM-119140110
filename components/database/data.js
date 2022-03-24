@@ -5,6 +5,7 @@ const Jadwal = [
         pelabuhanTujuan: 'bakauheni',
         kelas: 'reguler',
         harga: 30000,
+        kuota: 334,
     },
     {
         idJadwal: "002",
@@ -12,6 +13,7 @@ const Jadwal = [
         pelabuhanTujuan: 'bakauheni',  
         kelas: 'eksekutif',
         harga: 65000,
+        kuota: 145,
     },
     {
         idJadwal: "003",
@@ -19,6 +21,7 @@ const Jadwal = [
         pelabuhanTujuan: 'bakauheni',
         kelas: 'bisnis',
         harga: 80000,
+        kuota: 57,
     },
     {
         idJadwal: "004",
@@ -26,6 +29,7 @@ const Jadwal = [
         pelabuhanTujuan: 'merak',
         kelas: 'reguler',
         harga: 30000,
+        kuota: 234,
     },
     {
         idJadwal: "005",
@@ -33,6 +37,7 @@ const Jadwal = [
         pelabuhanTujuan: 'merak',
         kelas: 'eksekutif',
         harga: 65000,
+        kuota: 135,
     },
     {
         idJadwal: "006",
@@ -40,6 +45,7 @@ const Jadwal = [
         pelabuhanTujuan: 'merak',
         kelas: 'bisnis',
         harga: 80000,
+        kuota: 54,
     },
     {
         idJadwal: "007",
@@ -47,6 +53,7 @@ const Jadwal = [
         pelabuhanTujuan: 'batam',
         kelas: 'reguler',
         harga: 325000,
+        kuota: 534,
     },
     {
         idJadwal: "008",
@@ -54,6 +61,7 @@ const Jadwal = [
         pelabuhanTujuan: 'batam',
         kelas: 'eksekutif',
         harga: 600000,
+        kuota: 318,
     },
     {
         idJadwal: "009",
@@ -61,6 +69,7 @@ const Jadwal = [
         pelabuhanTujuan: 'batam',
         kelas: 'bisnis',
         harga: 950000,
+        kuota: 116,
     },
     {
         idJadwal: "010",
@@ -68,6 +77,7 @@ const Jadwal = [
         pelabuhanTujuan: 'tanjung priok',
         kelas: 'reguler',
         harga: 325000,
+        kuota: 623,
     },
     {
         idJadwal: "011",
@@ -75,6 +85,7 @@ const Jadwal = [
         pelabuhanTujuan: 'tanjung priok',
         kelas: 'eksekutif',
         harga: 600000,
+        kuota: 418,
     },
     {
         idJadwal: "012",
@@ -82,6 +93,7 @@ const Jadwal = [
         pelabuhanTujuan: 'tanjung priok',
         kelas: 'bisnis',
         harga: 950000,
+        kuota: 216,
     },
 ]
 

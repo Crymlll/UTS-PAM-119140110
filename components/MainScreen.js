@@ -6,8 +6,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import RouteHome from './route/RouteHome';
+import RoutePesanan from './route/RoutePesanan';
 import PembatalanScreen from './screens/PembatalanScreen';
-import PesananScreen from './screens/PesananScreen';
 import LainnyaScreen from './screens/LainnyaScreen';
 
 
@@ -30,12 +30,12 @@ const MainScreen = ({navigation}) => {
             >
                 <View style={styles.centeredView}>
                 <View style={styles.modalView}>
-                    <Text style={styles.modalText}>Hello World!</Text>
+                    <Text style={styles.modalText}>Crymlll App</Text>
                     <Pressable
                     style={[styles.button, styles.buttonClose]}
                     onPress={() => setModalVisible(!modalVisible)}
                     >
-                    <Text style={styles.textStyle}>Hide Modal</Text>
+                    <Text style={styles.textStyle}>Close</Text>
                     </Pressable>
                 </View>
                 </View>
@@ -72,7 +72,7 @@ const MainScreen = ({navigation}) => {
                 />
                 <Tab.Screen 
                     name="Pesanan" 
-                    component={PesananScreen}  
+                    component={RoutePesanan}  
                     options={{
                         title: 'Daftar Pemesanan',
                         headerStyle: {
@@ -92,7 +92,7 @@ const MainScreen = ({navigation}) => {
                     options={{
                         title: 'Daftar Pembatalan',
                         headerStyle: {
-                          backgroundColor: '#518fed',
+                          backgroundColor: '#f04313',
                         },
                         headerTintColor: '#fff',
                         headerTitleStyle: {
