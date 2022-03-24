@@ -1,0 +1,88 @@
+const Jadwal = [
+    {
+        idJadwal: "001",
+        pelabuhanAwal: 'merak',
+        pelabuhanTujuan: 'bakauheni',
+        kelas: 'reguler',
+        harga: 30000,
+    },
+    {
+        idJadwal: "002",
+        pelabuhanAwal: 'merak',
+        pelabuhanTujuan: 'bakauheni',  
+        kelas: 'eksekutif',
+        harga: 65000,
+    },
+    {
+        idJadwal: "003",
+        pelabuhanAwal: 'merak',
+        pelabuhanTujuan: 'bakauheni',
+        kelas: 'bisnis',
+        harga: 80000,
+    },
+    {
+        idJadwal: "004",
+        pelabuhanAwal: 'bakauheni',
+        pelabuhanTujuan: 'merak',
+        kelas: 'reguler',
+        harga: 30000,
+    },
+    {
+        idJadwal: "005",
+        pelabuhanAwal: 'bakauheni',
+        pelabuhanTujuan: 'merak',
+        kelas: 'eksekutif',
+        harga: 65000,
+    },
+    {
+        idJadwal: "006",
+        pelabuhanAwal: 'bakauheni',
+        pelabuhanTujuan: 'merak',
+        kelas: 'bisnis',
+        harga: 80000,
+    },
+    {
+        idJadwal: "007",
+        pelabuhanAwal: 'tanjung priok',
+        pelabuhanTujuan: 'batam',
+        kelas: 'reguler',
+        harga: 325000,
+    },
+    {
+        idJadwal: "008",
+        pelabuhanAwal: 'tanjung priok',
+        pelabuhanTujuan: 'batam',
+        kelas: 'eksekutif',
+        harga: 600000,
+    },
+    {
+        idJadwal: "009",
+        pelabuhanAwal: 'tanjung priok',
+        pelabuhanTujuan: 'batam',
+        kelas: 'bisnis',
+        harga: 950000,
+    },
+    {
+        idJadwal: "010",
+        pelabuhanAwal: 'batam',
+        pelabuhanTujuan: 'tanjung priok',
+        kelas: 'reguler',
+        harga: 325000,
+    },
+    {
+        idJadwal: "011",
+        pelabuhanAwal: 'batam',
+        pelabuhanTujuan: 'tanjung priok',
+        kelas: 'eksekutif',
+        harga: 600000,
+    },
+    {
+        idJadwal: "012",
+        pelabuhanAwal: 'batam',
+        pelabuhanTujuan: 'tanjung priok',
+        kelas: 'bisnis',
+        harga: 950000,
+    },
+]
+
+export { Jadwal }

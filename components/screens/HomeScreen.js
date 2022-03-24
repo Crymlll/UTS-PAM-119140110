@@ -3,6 +3,10 @@ import { View, Text, StyleSheet, Colors, TextInput, TouchableOpacity, Button } f
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {Picker} from '@react-native-picker/picker';
+import moment from 'moment';
+import 'moment/locale/id'
+moment.locale('id');
+
 
 import Feather from 'react-native-vector-icons/Feather';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
@@ -17,9 +21,9 @@ const HomeScreen = ({navigation}) => {
     const [text, onChangeText] = useState({
         keberangkatan: '',
         tujuan: '',
-        kelas: 'penumpangreguler',
-        tanggal: '',
-        jam: '',
+        kelas: 'reguler',
+        tanggal: '7 April 2022',
+        jam: '11:40',
     });
 
     const clickHandler = (textInput) => {
@@ -43,22 +47,34 @@ const HomeScreen = ({navigation}) => {
     const onChange = (event, value) => {
         setIsPickerShow(false);
         setDate(value);
-        onChangeText({ ...text, tanggal: value.toISOString().slice(0,10) });
+        onChangeText({ ...text, tanggal: dateFormatDayMonthYear(value) });
     };
 
     const onChangeTime = (event, value) => {
         setIsPickerShowTime(false);
         setTime(value);
-        onChangeText({ ...text, jam: onlyGetHoursAndMinutes(value) });
+        onChangeText({ ...text, jam: timeFormatHoursAndMinutes(value) });
     };
 
-    const onlyGetHoursAndMinutes = (date) => {
+
+    let dateFormatDayMonthYear = (date) => {
+        let dateFormat = moment(date).format('dddd, D MMMM YYYY');
+        return dateFormat;
+    }
+
+    let timeFormatHoursAndMinutes = (time) => {
+        let timeFormat = moment(time).format('HH:mm');
+        return timeFormat;
+    }
+
+    let onlyGetHoursAndMinutes = (date) => {
         return `${date.getHours()}:${date.getMinutes()}`;
     }
 
     return (
         <View style={formStyle.box}>
             <Text style={formStyle.title}>Kapalzy</Text>
+            <Text style={formStyle.titleSub}>by Aulia Rahman Zulfi(119140110)</Text>
             <View style={formStyle.package}>
                 <Text style={formStyle.text}>Pelabuhan Awal</Text>
                 <View style={formStyle.formSingle}>
@@ -96,8 +112,9 @@ const HomeScreen = ({navigation}) => {
                         style={{ width: '80%' }}
                         onValueChange={(itemValue) => onChangeText({...text, kelas: itemValue})}
                     >
-                        <Picker.Item label="Penumpang Reguler" value="penumpangreguler" />
-                        <Picker.Item label="Penumpang Eksekutif" value="penumpangeksekutif" />
+                        <Picker.Item label="Penumpang Reguler" value="reguler" />
+                        <Picker.Item label="Penumpang Eksekutif" value="eksekutif" />
+                        <Picker.Item label='Penumpang Bisnis' value="bisnis" />
                   </Picker>
                 </View>
             </View>
@@ -113,16 +130,16 @@ const HomeScreen = ({navigation}) => {
                     {/* The date picker */}
                     {isPickerShow && (
                         <DateTimePicker
-                        value={date}
-                        mode={'date'}
-                        display={Platform.OS === 'ios' ? 'spinner' : 'default'}
-                        is24Hour={true}
-                        onChange={onChange}
-                        style={formStyle.datePicker}
+                            value={date}
+                            mode={'date'}
+                            display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+                            is24Hour={true}
+                            onChange={onChange}
+                            style={formStyle.datePicker}
                         />
                     )}
                     <View style={formStyle.pickedDateContainer}>
-                        <Text onPress={showPicker} style={formStyle.pickedDate}>Tanggal Dipilih : {date.toISOString().slice(0,10)}</Text>
+                        <Text onPress={showPicker} style={formStyle.pickedDate}>Tanggal Dipilih : {moment(date).format('D MMMM YYYY')}</Text>
                     </View>
                 </View>
             </View>
@@ -138,16 +155,16 @@ const HomeScreen = ({navigation}) => {
                     {/* The date picker */}
                     {isPickerShowTime && (
                         <DateTimePicker
-                        value={date}
-                        mode={'time'}
-                        display={Platform.OS === 'ios' ? 'spinner' : 'default'}
-                        is24Hour={true}
-                        onChange={onChangeTime}
-                        style={formStyle.datePicker}
+                            value={date}
+                            mode={'time'}
+                            display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+                            is24Hour={true}
+                            onChange={onChangeTime}
+                            style={formStyle.datePicker}
                         />
                     )}
                     <View style={formStyle.pickedDateContainer}>
-                        <Text onPress={showPickerTime} style={formStyle.pickedDate}>Jam Dipilih : {onlyGetHoursAndMinutes(time)}</Text>
+                        <Text onPress={showPickerTime} style={formStyle.pickedDate}>Jam Dipilih : {moment(time).format('HH:mm')}</Text>
                     </View>
                 </View>
             </View>
@@ -160,11 +177,11 @@ const HomeScreen = ({navigation}) => {
             <View style={formStyle.package}>
                 <TouchableOpacity 
                     style={formStyle.button}
-                    // onPress={() => navigation.navigate('DetailScreen', {data: text})}
-                    onPress={() => (console.log(text))}
+                    onPress={() => navigation.navigate('DetailScreen', {data: text})}
+                    // onPress={() => (console.log(text))}
                 >
                     <EvilIcons style={formStyle.Icon} name="search" size={30} color="white"/>
-                    <Text style={formStyle.textButton}>Cari</Text>
+                    <Text style={formStyle.textButton}>Buat Tiket</Text>
                 </TouchableOpacity>
             </View>
 
@@ -187,8 +204,14 @@ const formStyle = StyleSheet.create({
         fontSize: 40,
         fontWeight: 'bold',
         color: '#518fed',
-        marginBottom: 20,
         textAlign: 'center',
+    },
+    titleSub:{
+        fontSize: 8,
+        fontWeight: 'bold',
+        color: '#c7c7c7',
+        textAlign: 'center',
+        marginBottom: 20,
     },
     package:{
         marginTop: 10,
@@ -240,7 +263,8 @@ const formStyle = StyleSheet.create({
     },
     textTicket:{
         fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'black'
     },
     button:{
         flex: 0,
