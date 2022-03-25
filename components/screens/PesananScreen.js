@@ -35,11 +35,11 @@ const PesananScreen = ({navigation}) => {
                                 <Text style={pesananStyle.tujuan}>{capitalizeEveryFirstLetterEachWord(printJadwal.tujuan)}</Text>
                             </View>
                             <Text style={{ fontWeight: 'bold', color: 'black' }}>Jadwal Masuk Pelabuhan</Text>
-                            <Text>{printJadwal.tanggal}</Text>
-                            <Text>{printJadwal.jam} WIB</Text>
+                            <Text style={{ color:'#000000' }}>{printJadwal.tanggal}</Text>
+                            <Text style={{ color:'#000000' }}>{printJadwal.jam} WIB</Text>
             
                             <Text style={{ fontWeight: 'bold', color: 'black' }}>Layanan</Text>
-                            <Text>{capitalizeEveryFirstLetterEachWord(printJadwal.kelas)}</Text>
+                            <Text style={{ color:'#000000' }}>{capitalizeEveryFirstLetterEachWord(printJadwal.kelas)}</Text>
             
                             <View
                                 style={{

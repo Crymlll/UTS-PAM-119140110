@@ -57,7 +57,8 @@ const formStyle = StyleSheet.create({
     },
     text:{
         fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color:'#000000'
     },
     Icon:{
         padding: 10,

@@ -59,11 +59,11 @@ const DetailScreen = ({route, navigation}) => {
                             <Text style={detailStyle.tujuan}>{capitalizeEveryFirstLetterEachWord(arrJadwal[0].pelabuhanTujuan)}</Text>
                         </View>
                         <Text style={{ fontWeight: 'bold', color: 'black' }}>Jadwal Masuk Pelabuhan</Text>
-                        <Text>{data.tanggal}</Text>
-                        <Text>{data.jam} WIB</Text>
+                        <Text style={{ color:'#000000' }}>{data.tanggal}</Text>
+                        <Text style={{ color:'#000000' }}>{data.jam} WIB</Text>
         
                         <Text style={{ fontWeight: 'bold', color: 'black' }}>Layanan</Text>
-                        <Text>{capitalizeEveryFirstLetterEachWord(data.kelas)}</Text>
+                        <Text style={{ color:'#000000' }}>{capitalizeEveryFirstLetterEachWord(data.kelas)}</Text>
         
                         <View
                             style={{

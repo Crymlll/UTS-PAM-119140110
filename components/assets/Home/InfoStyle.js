@@ -18,7 +18,8 @@ const infoStyle = StyleSheet.create({
     },
     text:{
         fontSize: 12,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#000000',
     },
     iconInput:{
         padding: 10,
@@ -26,7 +27,7 @@ const infoStyle = StyleSheet.create({
     input:{
         flex: 1,
         backgroundColor: '#fff',
-        color: '#424242',
+        color: '#000000',
     },
     box:{
         alignSelf: 'center',
@@ -192,6 +193,7 @@ const styles = StyleSheet.create({
     },
     modalText: {
       textAlign: "center",
+      color: '#000000',
     }
   });
 

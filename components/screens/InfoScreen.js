@@ -70,11 +70,11 @@ const InfoScreen = ({route, navigation}) => {
                     <Text style={infoStyle.tujuan}>{capitalizeEveryFirstLetterEachWord(data.tujuan)}</Text>
                 </View>
                 <Text style={{ fontWeight: 'bold', color: 'black' }}>Jadwal Masuk Pelabuhan</Text>
-                <Text>{data.tanggal}</Text>
-                <Text>{data.jam} WIB</Text>
+                <Text style={{ color:'#000000' }}>{data.tanggal}</Text>
+                <Text style={{ color:'#000000' }}>{data.jam} WIB</Text>
 
                 <Text style={{ fontWeight: 'bold', color: 'black' }}>Layanan</Text>
-                <Text>{capitalizeEveryFirstLetterEachWord(data.kelas)}</Text>
+                <Text style={{ color:'#000000' }}>{capitalizeEveryFirstLetterEachWord(data.kelas)}</Text>
 
                 <View
                     style={{
@@ -98,6 +98,7 @@ const InfoScreen = ({route, navigation}) => {
                         style={infoStyle.input}
                         placeholder="Aulia Rahman Zulfi"
                         underlineColorAndroid="transparent"
+                        placeholderTextColor={'#000000'}
                     />
                 </View>
             </View>
@@ -110,6 +111,7 @@ const InfoScreen = ({route, navigation}) => {
                         style={infoStyle.input}
                         placeholder="Laki - Laki"
                         underlineColorAndroid="transparent"
+                        placeholderTextColor={'#000000'}
                     />
                 </View>
             </View>
@@ -122,6 +124,7 @@ const InfoScreen = ({route, navigation}) => {
                         style={infoStyle.input}
                         placeholder="21 Tahun"
                         underlineColorAndroid="transparent"
+                        placeholderTextColor={'#000000'}
                     />
                 </View>
             </View>

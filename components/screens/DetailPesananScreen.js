@@ -53,9 +53,9 @@ const DetailPesananScreen = ({route, navigation}) => {
                         <View style={{ marginTop:20, flex:0, flexDirection: 'row', justifyContent: 'space-between', }}>
                             <Pressable
                             style={[styles.button, styles.buttonCancel]}
-                            onPress={() => navigation.goBack()}
+                            onPress={() => setModalVisible(!modalVisible)}
                             >
-                            <Text style={{ fontWeight: 'bold', }}>Tidak</Text>
+                            <Text style={{ fontWeight: 'bold', color: '#000000'}}>Tidak</Text>
                             </Pressable>
                             <Pressable
                             style={[styles.button, styles.buttonClose]}
@@ -77,11 +77,11 @@ const DetailPesananScreen = ({route, navigation}) => {
                             <Text style={detailPesananStyle.tujuan}>{capitalizeEveryFirstLetterEachWord(arrPemesanan[0].tujuan)}</Text>
                         </View>
                         <Text style={{ fontWeight: 'bold', color: 'black', marginTop: 10 }}>Jadwal Masuk Pelabuhan</Text>
-                        <Text>{arrPemesanan[0].tanggal}</Text>
-                        <Text>{arrPemesanan[0].jam} WIB</Text>
+                        <Text style={{ color:'#000000' }}>{arrPemesanan[0].tanggal}</Text>
+                        <Text style={{ color:'#000000' }}>{arrPemesanan[0].jam} WIB</Text>
 
                         <Text style={{ fontWeight: 'bold', color: 'black', marginTop: 10 }}>Layanan</Text>
-                        <Text>{capitalizeEveryFirstLetterEachWord(arrPemesanan[0].kelas)}</Text>
+                        <Text style={{ color:'#000000' }}>{capitalizeEveryFirstLetterEachWord(arrPemesanan[0].kelas)}</Text>
 
                         <View
                             style={{
@@ -102,13 +102,13 @@ const DetailPesananScreen = ({route, navigation}) => {
                         />
                         
                         <Text style={{ fontWeight: 'bold', color: 'black', marginTop:20, }}>Nama Lengkap</Text>
-                        <Text>{capitalizeEveryFirstLetterEachWord(arrPemesanan[0].nama)}</Text>
+                        <Text style={{ color:'#000000' }}>{capitalizeEveryFirstLetterEachWord(arrPemesanan[0].nama)}</Text>
 
                         <Text style={{ fontWeight: 'bold', color: 'black', marginTop:20, }}>Identitas</Text>
-                        <Text>{capitalizeEveryFirstLetterEachWord(arrPemesanan[0].identitas)}</Text>
+                        <Text style={{ color:'#000000' }}>{capitalizeEveryFirstLetterEachWord(arrPemesanan[0].identitas)}</Text>
 
                         <Text style={{ fontWeight: 'bold', color: 'black', marginTop:20, }}>Umur</Text>
-                        <Text>{capitalizeEveryFirstLetterEachWord(arrPemesanan[0].umur)}</Text>
+                        <Text style={{ color:'#000000' }}>{capitalizeEveryFirstLetterEachWord(arrPemesanan[0].umur)}</Text>
                         
                         <TouchableOpacity 
                             style={detailPesananStyle.buttonOuter}

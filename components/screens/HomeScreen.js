@@ -87,7 +87,7 @@ const HomeScreen = ({navigation}) => {
                     <Fontisto style={formStyle.Icon} name="ship" size={30} color="#518fed"/>
                     <Picker
                         selectedValue={text.keberangkatan}
-                        style={{ width: '80%' }}
+                        style={{ width: '80%', color:'#000000' }}
                         onValueChange={(itemValue) => onChangeText({...text, keberangkatan: itemValue})}
                         >
                         <Picker.Item label="Pilih Pelabuhan Awal" value="0" />
@@ -105,7 +105,7 @@ const HomeScreen = ({navigation}) => {
                 <Fontisto style={formStyle.Icon} name="ship" size={30} color="#518fed"/>
                     <Picker
                         selectedValue={text.tujuan}
-                        style={{ width: '80%' }}
+                        style={{ width: '80%', color:'#000000' }}
                         onValueChange={(itemValue) => onChangeText({...text, tujuan: itemValue})}
                         >
                         <Picker.Item label="Pilih Pelabuhan Tujuan" value="0" />
@@ -123,7 +123,7 @@ const HomeScreen = ({navigation}) => {
                     <MaterialIcons style={formStyle.Icon} name="airline-seat-recline-normal" size={30} color="#518fed"/>
                     <Picker
                         selectedValue={text.kelas}
-                        style={{ width: '80%' }}
+                        style={{ width: '80%', color:'#000000' }}
                         onValueChange={(itemValue) => onChangeText({...text, kelas: itemValue})}
                         >
                         <Picker.Item label="Pilih Layanan" value="0" />

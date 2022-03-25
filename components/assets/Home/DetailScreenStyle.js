@@ -43,7 +43,7 @@ const detailStyle = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
-        color: 'black',
+        color:'#000000'
     },
     tujuan:{
         fontSize: 20,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, Modal, Pressable} from 'react-native';
+import { View, Text, StyleSheet, Modal, Pressable, Image} from 'react-native';
 import { NavigationContainer, TabActions } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -31,9 +31,13 @@ const MainScreen = ({navigation}) => {
                 <View style={styles.centeredView}>
                 <View style={styles.modalView}>
                     <Text style={{ fontWeight:'bold', marginBottom:20, color: '#2196F3', fontSize:20, }}>IDENTITAS MAHASISWA</Text>
-                    <Text style={{ fontWeight:'bold' }}>Aulia Rahman Zulfi</Text>
-                    <Text style={{ fontWeight:'bold' }}>119140110</Text>
-                    <Text style={{ fontWeight:'bold', marginBottom:30, }}>Pengembangan Aplikasi Mobile - RD</Text>
+                    <Image 
+                        style={styles.Image}
+                        source={require('./images/profile.png')}
+                    ></Image>
+                    <Text style={{ fontWeight:'bold', color:'#000000' }}>Aulia Rahman Zulfi</Text>
+                    <Text style={{ fontWeight:'bold', color:'#000000' }}>119140110</Text>
+                    <Text style={{ fontWeight:'bold', marginBottom:30, color:'#000000' }}>Pengembangan Aplikasi Mobile - RD</Text>
                     <Pressable
                       style={[styles.button, styles.buttonClose, { marginTop:10, }]}
                       onPress={() => setModalVisible(!modalVisible)}
@@ -141,12 +145,14 @@ const styles = StyleSheet.create({
       },
       shadowOpacity: 0.25,
       shadowRadius: 4,
-      elevation: 5
+      elevation: 5,
+      width: '80%',
     },
     button: {
       borderRadius: 10,
       padding: 10,
-      elevation: 2
+      elevation: 2,
+      width: '100%',
     },
     buttonOpen: {
       backgroundColor: "#F194FF",
@@ -162,7 +168,12 @@ const styles = StyleSheet.create({
     modalText: {
       marginBottom: 15,
       textAlign: "center"
-    }
+    },
+    Image:{
+      resizeMode: 'contain',
+      height: 300,
+      marginBottom: 20,
+    },
   });
   
 
