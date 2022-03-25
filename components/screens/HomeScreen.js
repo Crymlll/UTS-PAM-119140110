@@ -23,7 +23,7 @@ const HomeScreen = ({navigation}) => {
     const [text, onChangeText] = useState({
         keberangkatan: '',
         tujuan: '',
-        kelas: 'reguler',
+        kelas: '',
         tanggal: 'Kamis, 7 April 2022',
         jam: '11:40',
     });
@@ -126,9 +126,10 @@ const HomeScreen = ({navigation}) => {
                         style={{ width: '80%' }}
                         onValueChange={(itemValue) => onChangeText({...text, kelas: itemValue})}
                         >
-                        <Picker.Item label="Penumpang Reguler" value="reguler" />
-                        <Picker.Item label="Penumpang Eksekutif" value="eksekutif" />
-                        <Picker.Item label='Penumpang Bisnis' value="bisnis" />
+                        <Picker.Item label="Pilih Layanan" value="0" />
+                        <Picker.Item label="Reguler" value="reguler" />
+                        <Picker.Item label="Eksekutif" value="eksekutif" />
+                        <Picker.Item label='Bisnis' value="bisnis" />
                   </Picker>
                 </View>
             </View>
