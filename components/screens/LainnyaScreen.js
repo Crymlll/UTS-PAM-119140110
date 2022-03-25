@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView } from 'react-native';
 
 const LainnyaScreen = ({navigation}) => {
     return (

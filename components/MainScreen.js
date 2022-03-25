@@ -30,10 +30,13 @@ const MainScreen = ({navigation}) => {
             >
                 <View style={styles.centeredView}>
                 <View style={styles.modalView}>
-                    <Text style={styles.modalText}>Crymlll App</Text>
+                    <Text style={{ fontWeight:'bold', marginBottom:20, color: '#2196F3', fontSize:20, }}>IDENTITAS MAHASISWA</Text>
+                    <Text style={{ fontWeight:'bold' }}>Aulia Rahman Zulfi</Text>
+                    <Text style={{ fontWeight:'bold' }}>119140110</Text>
+                    <Text style={{ fontWeight:'bold', marginBottom:30, }}>Pengembangan Aplikasi Mobile - RD</Text>
                     <Pressable
-                    style={[styles.button, styles.buttonClose]}
-                    onPress={() => setModalVisible(!modalVisible)}
+                      style={[styles.button, styles.buttonClose, { marginTop:10, }]}
+                      onPress={() => setModalVisible(!modalVisible)}
                     >
                     <Text style={styles.textStyle}>Close</Text>
                     </Pressable>
@@ -128,7 +131,7 @@ const styles = StyleSheet.create({
     modalView: {
       margin: 20,
       backgroundColor: "white",
-      borderRadius: 20,
+      borderRadius: 10,
       padding: 35,
       alignItems: "center",
       shadowColor: "#000",
@@ -141,7 +144,7 @@ const styles = StyleSheet.create({
       elevation: 5
     },
     button: {
-      borderRadius: 20,
+      borderRadius: 10,
       padding: 10,
       elevation: 2
     },
