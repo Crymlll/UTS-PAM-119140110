@@ -1,6 +1,6 @@
 const Pemesanan = [
     {
-        idPemesanan: 0,
+        idPemesanan: 1246098322059,
         keberangkatan: 'merak',
         tujuan: 'bakauheni',
         tanggal: 'Sabtu, 2 April 2022',
@@ -13,7 +13,7 @@ const Pemesanan = [
         status: 'scheduled'
     },
     {
-        idPemesanan: 1,
+        idPemesanan: 1526197835764,
         keberangkatan: 'batam',
         tujuan: 'tanjung priok',
         tanggal: 'Jumat, 13 Mei 2022',
@@ -26,12 +26,12 @@ const Pemesanan = [
         status: 'scheduled'
     },
     {
-        idPemesanan: 2,
+        idPemesanan: 315109970362,
         keberangkatan: 'batam',
         tujuan: 'tanjung priok',
         tanggal: 'Jumat, 13 Mei 2022',
         jam: '18:30',
-        kelas: 'Eksekutif',
+        kelas: 'Bisnis',
         harga: 950000,
         nama: 'Aulia Rahman Zulfi',
         identitas: 'Laki - Laki',

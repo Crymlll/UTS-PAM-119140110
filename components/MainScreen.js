@@ -75,7 +75,7 @@ const MainScreen = ({navigation}) => {
                 <Tab.Screen 
                     name="Home" 
                     component={RouteHome} 
-                    options={{ headerShown: false, }} 
+                    options={{ headerShown: false, unmountOnBlur: true}} 
                 />
                 <Tab.Screen 
                     name="Pesanan" 
@@ -91,6 +91,7 @@ const MainScreen = ({navigation}) => {
                           alignItems: 'center',
                         },
                         headerTitleAlign: 'center',
+                        unmountOnBlur: true
                       }}
                 />
                 <Tab.Screen 
@@ -107,6 +108,7 @@ const MainScreen = ({navigation}) => {
                           alignItems: 'center',
                         },
                         headerTitleAlign: 'center',
+                        unmountOnBlur: true
                       }}
                 />
                 <Tab.Screen 

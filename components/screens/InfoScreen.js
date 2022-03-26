@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, Modal, Pressable, SafeAreaView, ScrollView } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+// import { AsyncStorage } from 'react-native';
 import moment from 'moment';
 import 'moment/locale/id'
 moment.locale('id');
@@ -16,6 +18,25 @@ const InfoScreen = ({route, navigation}) => {
 
     const { data } = route.params;
 
+    const [dataPemesan, setDataPesanan] = useState({
+        nama: 'aulia rz',
+        identitas : 'laki-laki',
+        umur : '21',
+    })
+    const [idData, setIdData] = useState({
+        uId: '',
+        status: 'scheduled',
+    });
+
+    const allData = {...data, ...dataPemesan, ...idData};
+
+
+    const clickHandler = (textInput) => {
+        return (value) => {
+            setDataPesanan({ ...dataPemesan, [textInput]: value });
+        }
+    }
+
     let capitalizeEveryFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -23,6 +44,55 @@ const InfoScreen = ({route, navigation}) => {
     let capitalizeEveryFirstLetterEachWord = (string) => {
         return string.split(' ').map(word => capitalizeEveryFirstLetter(word)).join(' ');
     }
+
+    function createId() {
+        return Math.floor(Date.now() * Math.random());
+    }
+
+    const [Pemesanan, setGetPemesanan] = useState([]);
+
+    let saveData = async (data) => {
+        try {
+            if(Pemesanan.length > 0){
+                let temp = Pemesanan
+                console.log("temp > 0 : ", temp)
+
+                temp.push(data)
+
+                await AsyncStorage.setItem('data', JSON.stringify(temp))
+            }else{
+                let arr = []
+    
+                let temp = Pemesanan
+                console.log("temp : ", temp)
+
+                arr.push(temp)
+                arr.push(data)
+
+                await AsyncStorage.setItem('data', JSON.stringify(arr))
+            }
+            
+        } catch (e) {
+            console.log(e);
+        }
+        console.log("Success Created DATA : ", data);
+    }
+
+    const fetchData = async ()  => {
+        try {
+            const data = await AsyncStorage.getItem('data');
+            if (data !== null) {
+                // console.log("JSON : ",JSON.parse(data))
+                setGetPemesanan(JSON.parse(data));
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    };    
+
+    useEffect(() => {
+        fetchData();
+    }, [])
 
     return (
     <View>
@@ -34,8 +104,7 @@ const InfoScreen = ({route, navigation}) => {
                 transparent={true}
                 visible={modalVisible}
                 onRequestClose={() => {
-                Alert.alert("Modal has been closed.");
-                setModalVisible(!modalVisible);
+                    setModalVisible(!modalVisible);
                 }}
             >
                 <View style={styles.centeredView}>
@@ -47,7 +116,11 @@ const InfoScreen = ({route, navigation}) => {
                     <View style={{ marginTop:20, }}>
                         <Pressable
                         style={[styles.button, styles.buttonClose]}
-                        onPress={() => navigation.navigate('Pesanan')}
+                        onPress={() => {
+                            // console.log("MODAL DATA : ",allData)
+                            saveData(allData)
+                            navigation.navigate('Pesanan')
+                        }}
                         >
                         <Text style={styles.textStyle}>Selesai</Text>
                         </Pressable>
@@ -98,7 +171,8 @@ const InfoScreen = ({route, navigation}) => {
                         style={infoStyle.input}
                         placeholder="Aulia Rahman Zulfi"
                         underlineColorAndroid="transparent"
-                        placeholderTextColor={'#000000'}
+                        placeholderTextColor={'#c4c4c4'}
+                        onChangeText={clickHandler('nama')}
                     />
                 </View>
             </View>
@@ -111,7 +185,8 @@ const InfoScreen = ({route, navigation}) => {
                         style={infoStyle.input}
                         placeholder="Laki - Laki"
                         underlineColorAndroid="transparent"
-                        placeholderTextColor={'#000000'}
+                        placeholderTextColor={'#c4c4c4'}
+                        onChangeText={clickHandler('identitas')}
                     />
                 </View>
             </View>
@@ -124,14 +199,19 @@ const InfoScreen = ({route, navigation}) => {
                         style={infoStyle.input}
                         placeholder="21 Tahun"
                         underlineColorAndroid="transparent"
-                        placeholderTextColor={'#000000'}
+                        placeholderTextColor={'#c4c4c4'}
+                        onChangeText={clickHandler('umur')}
                     />
                 </View>
             </View>
 
             <TouchableOpacity 
                 style={infoStyle.buttonOuter}
-                onPress={() => setModalVisible(true)}
+                onPress={() => {
+                    setIdData({...idData, uId: createId()})
+                    // console.log(allData)
+                    setModalVisible(true)
+                }}
             >
                 <Text style={infoStyle.textButton}>Submit</Text>
             </TouchableOpacity>

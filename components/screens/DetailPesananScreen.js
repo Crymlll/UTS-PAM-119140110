@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Modal, Pressable, SafeAreaView, ScrollView  } from "react-native";
-import { Pemesanan } from "../database/pemesanan";
+// import { Pemesanan } from "../database/pemesanan";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -19,15 +20,48 @@ const DetailPesananScreen = ({route, navigation}) => {
         return string.split(' ').map(word => capitalizeEveryFirstLetter(word)).join(' ');
     }
 
+    const [Pemesanan, setGetPemesanan] = useState([]);
+    
+    const fetchData = async () => {
+        try {
+            const data = await AsyncStorage.getItem('data');
+            if (data !== null) {
+                // console.log("JSON : ",JSON.parse(data))
+                setGetPemesanan(JSON.parse(data));
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    };    
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+
+    let saveData = async (data) => {
+        try {
+            await AsyncStorage.setItem('data', JSON.stringify(data))
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
 
     let detailPesanan = () => {
 
         let arrPemesanan = Pemesanan.filter ( (x) => {
 
             return(
-                x.idPemesanan === data
+                x.uId === data
             )
         })
+
+        const updateCancel = Pemesanan.map(
+            x => x.uId === data 
+            ? {...x, status: 'canceled'} 
+            : x
+        )
         // console.log(arrPemesanan)
 
         if(arrPemesanan.length > 0){
@@ -59,7 +93,11 @@ const DetailPesananScreen = ({route, navigation}) => {
                             </Pressable>
                             <Pressable
                             style={[styles.button, styles.buttonClose]}
-                            onPress={() => navigation.navigate('Pembatalan')}
+                            onPress={() => {
+                                updateCancel
+                                saveData(updateCancel)
+                                navigation.navigate('Pembatalan')
+                            }}
                             >
                             <Text style={styles.textStyle}>Yakin</Text>
                             </Pressable>

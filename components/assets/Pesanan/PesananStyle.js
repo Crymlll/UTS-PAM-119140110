@@ -2,6 +2,17 @@ import React from 'react'
 import { View, Text, StyleSheet, Colors } from 'react-native';
 
 const pesananStyle = StyleSheet.create({
+    box:{
+        alignSelf: 'center',
+        backgroundColor: '#fff',
+        borderRadius: 15,
+        padding: 30,
+        width: '90%',
+        top: '5%',
+        shadowColor: '#000',
+        elevation: 5,
+        marginBottom: '20%',
+    },
     boxGray:{
         alignSelf: 'center',
         backgroundColor: '#f5f5f5',
@@ -17,6 +28,9 @@ const pesananStyle = StyleSheet.create({
         shadowColor: '#000',
         elevation: 5,
         marginBottom: '5%',
+    },
+    buttonNo:{
+        marginTop: '20%',
     },
     kuota:{
         fontSize: 15,
@@ -108,6 +122,34 @@ const pesananStyle = StyleSheet.create({
         marginRight: '5%',
         paddingLeft: 20,
         paddingRight: 20,
+    },
+    maaf:{
+        alignItems: 'center',
+        marginTop: '20%',
+    },
+    maafText:{
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: 'black',
+        textAlign: 'center',
+        marginBottom: '5%',
+    },
+    outerBox:{
+        marginBottom: 20,
+    },
+    kembaliNo:{
+        backgroundColor: '#fff',
+        padding: 10,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#969696',
+        paddingLeft: 20,
+        paddingRight: 20,
+    },
+    Icon:{
+        fontSize: 100,
+        marginLeft: 10,
+        marginRight: 10,
     },
 })
 
