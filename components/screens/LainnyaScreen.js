@@ -6,6 +6,7 @@ const LainnyaScreen = ({navigation}) => {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text onPress={() => navigation.navigate('Home')}>Lainnya Screen</Text>
         </View>
+        
     )
 }
 

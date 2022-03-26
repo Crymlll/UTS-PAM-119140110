@@ -65,7 +65,8 @@ const PembatalanScreen = ({navigation}) => {
                                         marginTop: 10
                                     }}
                                 />
-                
+
+                                
                                 <View style={pembatalanStyle.hargaBox}>
                                     <Text style={pembatalanStyle.textDewasa}>Dewasa x 1</Text>
                                     <Text style={pembatalanStyle.harga}>Rp. {printJadwal.harga}</Text>

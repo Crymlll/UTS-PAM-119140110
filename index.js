@@ -1,5 +1,6 @@
 /**
  * @format
+ * @auliarahmanz
  */
 
 import {AppRegistry} from 'react-native';
